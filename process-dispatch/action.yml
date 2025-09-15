@@ -2,20 +2,22 @@ name: 'process-dispatch'
 description: 'Process OnFusionCoe dispatch operation'
 
 on:
-workflow_call:
-  inputs:
-    dispatch_action:
-      description: 'The action to be taken during the dispatch operation workflow'
-      required: true
-      type: string
+  workflow_call:
+    inputs:
+      dispatch_action:
+        description: 'The action to be taken during the dispatch operation workflow'
+        required: true
+        type: string
   #secrets:
   #  token:
   #  required: true
 
+
 jobs:
+  process-dispatch-action:
+    runs-on: windows-latest
 
-  system-check:
-
+    steps:
     - name: Run Env
       run: env
     
