@@ -1,5 +1,5 @@
-name: 'unpack-solution'
-description: 'Power Platform Unpack Solution'
+name: 'process-dispatch'
+description: 'Process OnFusionCoe dispatch operation'
 inputs:
   dispatch_action:
     description: 'The action to be taken during the dispatch operation workflow'
