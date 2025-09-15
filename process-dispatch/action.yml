@@ -13,7 +13,12 @@ workflow_call:
   #  required: true
 
 jobs:
+
   system-check:
-    - name: confirm running
-      run: |
-        echo "repository variable : ${{inputs.dispatch_action}}"
+
+    - name: Run Env
+      run: env
+    
+    #- name: confirm running
+    #  run: |
+    #    echo "repository variable : ${{inputs.dispatch_action}}"
