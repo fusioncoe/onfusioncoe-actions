@@ -16,7 +16,9 @@ runs:
   using: "composite"
   steps:
     - name: Run Env
-      run: env  
+      shell: bash
+      run: env
+      
 
 #jobs:
 #  process-dispatch-action:
