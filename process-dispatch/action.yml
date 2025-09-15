@@ -1,10 +1,16 @@
 name: 'process-dispatch'
 description: 'Process OnFusionCoe dispatch operation'
-inputs:
-  dispatch_action:
-    description: 'The action to be taken during the dispatch operation workflow'
-    required: true
-    type: string
+
+on:
+workflow_call:
+  inputs:
+    dispatch_action:
+      description: 'The action to be taken during the dispatch operation workflow'
+      required: true
+      type: string
+  #secrets:
+  #  token:
+  #  required: true
 
 jobs:
   system-check:
