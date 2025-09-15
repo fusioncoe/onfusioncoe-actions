@@ -1,9 +1,6 @@
 name: 'process-dispatch'
 description: 'Process OnFusionCoe dispatch operation'
 
-env:
-  VERSION_TAG: 'main'
-
 on:
   workflow_call:
     inputs:
@@ -36,7 +33,8 @@ on:
       cloud:
         description: 'Cloud instance to authenticate with. Default: Public. See "pac auth create help" for valid cloud instance names'
         required: false
-        default: 'Public'            
+        default: 'Public'
+             
 
 runs:
   using: "composite"
@@ -47,7 +45,7 @@ runs:
       run: env
 
     - name: Ensure Power Platform
-      uses: fusioncoe/onfusioncoe-actions/ensure-powerplatform-install@${{ env.VERSION_TAG}}
+      uses: ./ensure-powerplatform-install
       
 
 #jobs:
