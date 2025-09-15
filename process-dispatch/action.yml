@@ -12,14 +12,19 @@ on:
   #  token:
   #  required: true
 
-
-jobs:
-  process-dispatch-action:
-    runs-on: windows-latest
-
-    steps:
+runs:
+  using: "composite"
+  steps:
     - name: Run Env
-      run: env
+      run: env  
+
+#jobs:
+#  process-dispatch-action:
+#    runs-on: windows-latest
+
+ #   steps:
+ #   - name: Run Env
+ #     run: env
     
     #- name: confirm running
     #  run: |
