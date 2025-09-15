@@ -1,6 +1,9 @@
 name: 'process-dispatch'
 description: 'Process OnFusionCoe dispatch operation'
 
+env:
+  VERSION_TAG: 'main'
+
 on:
   workflow_call:
     inputs:
@@ -44,7 +47,7 @@ runs:
       run: env
 
     - name: Ensure Power Platform
-      uses: ../dispatch-flows/ensure-powerplatform-install.yml
+      uses: fusioncoe/onfusioncoe-actions/ensure-powerplatform-install@${{ env.VERSION_TAG}}
       
 
 #jobs:

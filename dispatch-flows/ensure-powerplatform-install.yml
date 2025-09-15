@@ -1,9 +1,0 @@
-name: 'ensure-powerplatform-install'
-description: 'ensure-powerplatform-install'
-
-on:
-  workflow_call:
-
-steps:
-- name: running workflow ensure-powerplatform-install.
-  run: echo "ensure-powerplatform-install"  
