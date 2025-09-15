@@ -41,8 +41,8 @@ runs:
   steps:
     
     - name: Run Env
-      shell: bash
-      run: env
+    run: |
+      echo "running action ${{inputs.dispatch_action}}"
 
     - name: Ensure Power Platform
       uses: fusioncoe/onfusioncoe-actions/ensure-powerplatform-install@v0

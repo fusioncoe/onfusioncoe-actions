@@ -7,5 +7,6 @@ on:
 runs:
   using: 'composite'
   steps:
-  - name: running workflow ensure-powerplatform-install.
-    run: echo "ensure-powerplatform-install"  
+  - name: running workflow ensure-powerplatform-install. 
+    run: |
+      echo "ensure-powerplatform-install"  
