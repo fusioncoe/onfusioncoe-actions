@@ -45,7 +45,7 @@ runs:
       run: env
 
     - name: Ensure Power Platform
-      uses: ./ensure-powerplatform-install
+      uses: fusioncoe/onfusioncoe-actions/ensure-powerplatform-install@v0
       
 
 #jobs:
