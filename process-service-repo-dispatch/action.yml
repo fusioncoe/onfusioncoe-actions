@@ -1,0 +1,24 @@
+name: 'process-service-repo-dispatch'
+description: 'Process OnFusionCoe service repo dispatch operation'
+
+on:
+  workflow_call:
+    inputs:
+
+      event_type:
+        description: 'The type of operation'
+        required: true
+        type: string
+
+      payload:
+        description: 'The JSON payload of the operation'
+        required: true
+
+runs:
+  using: "composite"
+  steps:
+    
+    - name: Run Env
+      shell: pwsh    
+      run: |
+        echo "Handling dispatch operation ${{inputs.event_type}}"
