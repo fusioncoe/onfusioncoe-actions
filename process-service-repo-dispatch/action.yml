@@ -25,9 +25,25 @@ runs:
   using: "composite"
   steps:
     
-    - name: Run Env
+    - name: Generating Credentials
       shell: pwsh    
       run: |
-        echo "Handling dispatch operation ${{inputs.action}}"
+        echo "Handling dispatch operation ${{github.event.action}}"
         # get-content ${{ github.event_path }} 
-        Get-InstalledModule                          
+
+        $TenantId = "${{ input.cicd-tenant-id }}"
+        $AppClientId="${{ input.cicd-app-id }}"        
+        $ClientSecret ="${{ input.cicd-sp-client-secret }}"
+          
+        $RequestBody = @{client_id=$AppClientId;client_secret=$ClientSecret;grant_type="client_credentials";scope=" https://graph.microsoft.com/.default";}
+        $OAuthResponse = Invoke-RestMethod -Method Post -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Body $RequestBody
+        $AccessToken = $OAuthResponse.access_token
+
+        echo "SPN_BEARER=bearer $AccessToken" >> $GITHUB_ENV
+
+    - name: Checking Credentials
+      shell: pwsh    
+      run: |
+        echo "Checking for bearer token: ${{env.SPN_BEARER}}"              
+
+
