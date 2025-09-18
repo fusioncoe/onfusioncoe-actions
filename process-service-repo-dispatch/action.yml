@@ -52,6 +52,5 @@ runs:
       shell: pwsh    
       run: |
         echo "V1 Checking for bearer token: ${{env.SPN_BEARER}}"
-        echo "V2 Checking for bearer token: $SPN_BEARER"
-        echo "V3 Checking for bearer token: ${{outputs.SPN_BEARER}}"        
+        echo "V2 Checking for bearer token: $SPN_BEARER"       
                                     
