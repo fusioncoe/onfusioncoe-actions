@@ -31,9 +31,9 @@ runs:
         echo "Handling dispatch operation ${{github.event.action}}"
         # get-content ${{ github.event_path }} 
 
-        $TenantId = "${{ input.cicd-tenant-id }}"
-        $AppClientId="${{ input.cicd-app-id }}"        
-        $ClientSecret ="${{ input.cicd-sp-client-secret }}"
+        $TenantId = "${{ inputs.cicd-tenant-id }}"
+        $AppClientId="${{ inputs.cicd-app-id }}"        
+        $ClientSecret ="${{ inputs.cicd-sp-client-secret }}"
           
         $RequestBody = @{client_id=$AppClientId;client_secret=$ClientSecret;grant_type="client_credentials";scope=" https://graph.microsoft.com/.default";}
         $OAuthResponse = Invoke-RestMethod -Method Post -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Body $RequestBody
