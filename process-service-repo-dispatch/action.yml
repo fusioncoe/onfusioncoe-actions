@@ -10,10 +10,6 @@ on:
         required: true
         type: string
 
-      payload:
-        description: 'The JSON payload of the operation'
-        required: true
-
 runs:
   using: "composite"
   steps:
@@ -22,4 +18,9 @@ runs:
       shell: pwsh    
       run: |
         echo "Handling dispatch operation ${{inputs.action}}"
-        get-content ${{ github.event_path }}        
+        get-content ${{ github.event_path }} 
+
+    - name: Testing Access To Event inputs
+      shell: pwsh    
+      run: |
+        echo "${{ github.event.client_payload }}"                     
