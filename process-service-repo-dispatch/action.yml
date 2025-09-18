@@ -29,14 +29,5 @@ runs:
       shell: pwsh    
       run: |
         echo "Handling dispatch operation ${{inputs.action}}"
-        get-content ${{ github.event_path }} 
-
-    - name: Testing Access To Event inputs
-      shell: pwsh    
-      run: |
-        echo "Total count: ${{ github.event.client_payload.total_count }}"   
-
-    - name: Testing Access To Repo Env Vars inputs
-      shell: pwsh    
-      run: |
-        echo "Application ID: ${{ inputs.cicd-app-id }} "                            
+        # get-content ${{ github.event_path }} 
+        Get-InstalledModule                          
