@@ -5,10 +5,21 @@ on:
   workflow_call:
     inputs:
 
-      action:
-        description: 'The type of operation'
-        required: true
-        type: string
+      cicd-app-id:
+        description: 'The application id to authenticate with.'
+        required: false
+
+      cicd-sp-client-secret:
+        description: 'The client secret to authenticate with. Required if authenticating with app-id.'
+        required: false
+
+      cicd-tenant-id:
+        description: 'Tenant id if using app-id & client secret to authenticate.'
+        required: false
+
+      cicd-cloud:
+        description: 'Cloud instance to authenticate with. Default: Public. See "pac auth create help" for valid cloud instance names'
+        required: false
 
 runs:
   using: "composite"
