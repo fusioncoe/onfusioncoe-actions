@@ -36,7 +36,7 @@ runs:
         $ClientSecret ="${{ inputs.cicd-sp-client-secret }}"
         $InvokeUrl = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
           
-        $RequestBody = @{client_id=$AppClientId;client_secret=$ClientSecret;grant_type="client_credentials";scope=" https://graph.microsoft.com/.default";}
+        $RequestBody = @{client_id=$AppClientId;client_secret=$ClientSecret;grant_type="client_credentials";scope="https://graph.microsoft.com/.default";}
 
         echo $InvokeUrl
         echo $RequestBody
