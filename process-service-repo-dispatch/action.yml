@@ -57,6 +57,9 @@ runs:
         echo "V2 Checking for bearer token: $SPN_BEARER" 
 
     - name: Checking Credentials v2
-      run: echo "V2 Checking for bearer token: $env:SPN_BEARER" 
+      shell: pwsh    
+      run: |
+        echo "V2 Checking for bearer token: $env:SPN_BEARER"
+
                      
                                     
