@@ -44,9 +44,11 @@ runs:
         $OAuthResponse = Invoke-RestMethod -Method Post -Uri $InvokeUrl -Body $RequestBody
         $AccessToken = $OAuthResponse.access_token
 
-        echo $AccessToken
+        $AuthorizationHeader = "bearer $AccessToken'"
 
-        echo "SPN_BEARER='bearer $AccessToken'" >> $GITHUB_ENV
+        echo $AuthorizationHeader
+
+        echo "SPN_BEARER=$AuthorizationHeader" >> $GITHUB_ENV
 
     - name: Checking Credentials
       shell: pwsh    
