@@ -5,19 +5,19 @@ on:
   workflow_call:
     inputs:
 
-      cicd-app-id:
+      cicd_app_id:
         description: 'The application id to authenticate with.'
         required: false
 
-      cicd-sp-client-secret:
+      cicd_sp_client_secret:
         description: 'The client secret to authenticate with. Required if authenticating with app-id.'
         required: false
 
-      cicd-tenant-id:
+      cicd_tenant_id:
         description: 'Tenant id if using app-id & client secret to authenticate.'
         required: false
 
-      cicd-cloud:
+      cicd_cloud:
         description: 'Cloud instance to authenticate with. Default: Public. See "pac auth create help" for valid cloud instance names'
         required: false
 
@@ -31,9 +31,9 @@ runs:
         echo "Handling dispatch operation ${{github.event.action}}"
         # get-content ${{ github.event_path }} 
 
-        $TenantId = "${{ inputs.cicd-tenant-id }}"
-        $AppClientId="${{ inputs.cicd-app-id }}"        
-        $ClientSecret ="${{ inputs.cicd-sp-client-secret }}"
+        $TenantId = "${{ inputs.cicd_tenant_id }}"
+        $AppClientId="${{ inputs.cicd_app_id }}"        
+        $ClientSecret ="${{ inputs.cicd_sp_client_secret }}"
         $InvokeUrl = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
           
         $RequestBody = @{client_id=$AppClientId;client_secret=$ClientSecret;grant_type="client_credentials";scope="https://graph.microsoft.com/.default";}
@@ -44,7 +44,9 @@ runs:
         $OAuthResponse = Invoke-RestMethod -Method Post -Uri $InvokeUrl -Body $RequestBody
         $AccessToken = $OAuthResponse.access_token
 
-        echo "SPN_BEARER=bearer $AccessToken" >> $GITHUB_ENV
+        echo $AccessToken
+
+        echo "SPN_BEARER='bearer $AccessToken'" >> $GITHUB_ENV
 
     - name: Checking Credentials
       shell: pwsh    
