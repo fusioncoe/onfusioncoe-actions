@@ -39,4 +39,4 @@ runs:
     - name: Testing Access To Repo Env Vars inputs
       shell: pwsh    
       run: |
-        echo "Application ID: ??????"                            
+        echo "Application ID: ${{ inputs.cicd-app-id }} "                            
