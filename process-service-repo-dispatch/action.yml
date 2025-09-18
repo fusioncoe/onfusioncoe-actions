@@ -28,4 +28,4 @@ runs:
     - name: Testing Access To Repo Env Vars inputs
       shell: pwsh    
       run: |
-        echo "Application ID: ${{ vars.FUSIONCOE_SP_APPLICATION_ID }}"                            
+        echo "Application ID: ??????"                            
