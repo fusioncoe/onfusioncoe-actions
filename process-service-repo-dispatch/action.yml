@@ -23,4 +23,4 @@ runs:
     - name: Testing Access To Event inputs
       shell: pwsh    
       run: |
-        echo "${{ github.event.client_payload }}"                     
+        echo "Total count: ${{ github.event.client_payload.total_count }}"                     
