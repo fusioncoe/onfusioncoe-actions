@@ -24,8 +24,7 @@ on:
 runs:
   using: "composite"
   steps:
-    
-    - name: Generating Credentials
+    - name: authentication
       shell: pwsh    
       run: |
         echo "Handling dispatch operation ${{github.event.action}}"
@@ -44,15 +43,20 @@ runs:
         $OAuthResponse = Invoke-RestMethod -Method Post -Uri $InvokeUrl -Body $RequestBody
         $AccessToken = $OAuthResponse.access_token
 
-        $AuthorizationHeader = "bearer $AccessToken'"
+        $AuthorizationHeader = "bearer $AccessToken"
 
         echo $AuthorizationHeader
 
         echo "SPN_BEARER=$AuthorizationHeader" >> $GITHUB_ENV
+        echo "SPN_BEARER=$AuthorizationHeader" >> $GITHUB_OUTPUT        
 
     - name: Checking Credentials
       shell: pwsh    
       run: |
         echo "V1 Checking for bearer token: ${{env.SPN_BEARER}}"
-        echo "V2 Checking for bearer token: $SPN_BEARER"       
+        echo "V2 Checking for bearer token: $SPN_BEARER" 
+
+    - name: Checking Credentials v2
+      run: echo "V2 Checking for bearer token: $env:SPN_BEARER" 
+                     
                                     
