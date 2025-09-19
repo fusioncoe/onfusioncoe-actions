@@ -20,7 +20,8 @@ const core = require("@actions/core");
         grant_type: 'client_credentials',
         scope: core.getInput('scope')
     };
-    core.setOutput('SPN_BEARER', 'SPN BEARER VALUE');
+    //core.setOutput('SPN_BEARER', 'SPN BEARER VALUE');
+    core.exportVariable('SPN_BEARER', 'SPN BEARER VALUE');
     core.endGroup();
 }))().catch(error => {
     //const logger = runnerParameters.logger;
