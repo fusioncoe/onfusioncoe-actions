@@ -31,7 +31,7 @@ const node_fetch_1 = require("node-fetch");
         },
     });
     if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
+        throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
     }
     var authResponse = (yield response.json());
     console.warn(response);
@@ -46,7 +46,7 @@ const node_fetch_1 = require("node-fetch");
         },
     });
     if (!appResponse.ok) {
-        throw new Error(`Error! status: ${appResponse.status}`);
+        throw new Error(`Error Getting App Info! status: ${appResponse.status} : ${appResponse.statusText}`);
     }
     var appReg = (yield response.json());
     //core.setOutput('SPN_BEARER', 'SPN BEARER VALUE');

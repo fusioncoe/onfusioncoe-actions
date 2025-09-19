@@ -38,7 +38,7 @@ export interface AuthResponse {
     });
 
     if (!response.ok) {
-      throw new Error(`Error! status: ${response.status}`);
+      throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
     }
 
     var authResponse = (await response.json()) as AuthResponse;
@@ -56,13 +56,13 @@ export interface AuthResponse {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+         Accept: 'application/json',
         'Authorization' : bearer
       },
     });
 
     if (!appResponse.ok) {
-      throw new Error(`Error! status: ${appResponse.status}`);
+      throw new Error(`Error Getting App Info! status: ${appResponse.status} : ${appResponse.statusText}`);
     }
 
 
