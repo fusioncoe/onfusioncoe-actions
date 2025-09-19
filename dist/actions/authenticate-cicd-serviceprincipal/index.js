@@ -19810,7 +19810,7 @@ var core = require_core();
     grant_type: "client_credentials",
     scope: core.getInput("scope")
   };
-  core.setOutput("SPN_BEARER", "SPN BEARER VALUE");
+  core.exportVariable("SPN_BEARER", "SPN BEARER VALUE");
   core.endGroup();
 }))().catch((error) => {
   core.endGroup();
