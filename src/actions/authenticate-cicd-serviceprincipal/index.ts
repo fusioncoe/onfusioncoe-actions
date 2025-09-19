@@ -4,10 +4,12 @@ import fetch from 'node-fetch';
 
 //import { runnerParameters } from '../../lib/runnerParameters';
 
-type authResponse = {
-  access_token: string;
-};
-
+export interface AuthResponse {
+    token_type:     string;
+    expires_in:     number;
+    ext_expires_in: number;
+    access_token:   string;
+}
 
 (async() => {
     core.startGroup('authenticate-cicd-serviceprincipal:');
@@ -40,9 +42,11 @@ type authResponse = {
 
     core.info (await response.text());
 
-    var authResponse = (await response.json()) as authResponse;
+    var authResponse = (await response.json()) as AuthResponse;
 
     console.warn(response);
+
+    console.warn(authResponse);    
     
 
     const bearer = `bearer ${authResponse.access_token}`;
@@ -51,6 +55,7 @@ type authResponse = {
     core.exportVariable('SPN_BEARER', bearer);
     core.endGroup();
 })().catch(error => {
+    console.warn(error);
     //const logger = runnerParameters.logger;
     //logger.error(`failed: ${error}`);    
     core.endGroup();
