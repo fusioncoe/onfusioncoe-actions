@@ -26325,7 +26325,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
   };
   core.setCommandEcho(true);
   const tenant_id = core.getInput("tenant_id");
-  const fetchUrl = `https://login.microsoftonline.com/${tenant_id}}/oauth2/v2.0/token`;
+  const fetchUrl = `https://login.microsoftonline.com/${tenant_id}/oauth2/v2.0/token`;
   const response = yield (0, node_fetch_1.default)(fetchUrl, {
     method: "POST",
     body: JSON.stringify(cred),
