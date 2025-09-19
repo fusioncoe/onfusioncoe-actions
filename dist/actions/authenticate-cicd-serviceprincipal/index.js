@@ -5090,7 +5090,7 @@ var require_formdata = __commonJS({
     var { webidl } = require_webidl();
     var { Blob: Blob4, File: NativeFile } = require("buffer");
     var File3 = NativeFile ?? UndiciFile;
-    var FormData3 = class _FormData {
+    var FormData4 = class _FormData {
       constructor(form) {
         if (form !== void 0) {
           throw webidl.errors.conversionFailed({
@@ -5207,8 +5207,8 @@ var require_formdata = __commonJS({
         }
       }
     };
-    FormData3.prototype[Symbol.iterator] = FormData3.prototype.entries;
-    Object.defineProperties(FormData3.prototype, {
+    FormData4.prototype[Symbol.iterator] = FormData4.prototype.entries;
+    Object.defineProperties(FormData4.prototype, {
       [Symbol.toStringTag]: {
         value: "FormData",
         configurable: true
@@ -5232,7 +5232,7 @@ var require_formdata = __commonJS({
       }
       return { name, value };
     }
-    module2.exports = { FormData: FormData3 };
+    module2.exports = { FormData: FormData4 };
   }
 });
 
@@ -5250,7 +5250,7 @@ var require_body = __commonJS({
       createDeferredPromise,
       fullyReadBody
     } = require_util2();
-    var { FormData: FormData3 } = require_formdata();
+    var { FormData: FormData4 } = require_formdata();
     var { kState } = require_symbols2();
     var { webidl } = require_webidl();
     var { DOMException: DOMException3, structuredClone: structuredClone2 } = require_constants2();
@@ -5479,7 +5479,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r
           if (/multipart\/form-data/.test(contentType)) {
             const headers = {};
             for (const [key, value] of this.headers) headers[key.toLowerCase()] = value;
-            const responseFormData = new FormData3();
+            const responseFormData = new FormData4();
             let busboy;
             try {
               busboy = new Busboy({
@@ -5539,7 +5539,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r
             } catch (err) {
               throw Object.assign(new TypeError(), { cause: err });
             }
-            const formData = new FormData3();
+            const formData = new FormData4();
             for (const [name, value] of entries) {
               formData.append(name, value);
             }
@@ -11946,7 +11946,7 @@ var require_response = __commonJS({
     } = require_constants2();
     var { kState, kHeaders, kGuard, kRealm } = require_symbols2();
     var { webidl } = require_webidl();
-    var { FormData: FormData3 } = require_formdata();
+    var { FormData: FormData4 } = require_formdata();
     var { getGlobalOrigin } = require_global();
     var { URLSerializer } = require_dataURL();
     var { kHeadersList, kConstruct } = require_symbols();
@@ -12242,7 +12242,7 @@ var require_response = __commonJS({
       ReadableStream2
     );
     webidl.converters.FormData = webidl.interfaceConverter(
-      FormData3
+      FormData4
     );
     webidl.converters.URLSearchParams = webidl.interfaceConverter(
       URLSearchParams
@@ -24427,7 +24427,7 @@ Content-Type: ${v.type || "application/octet-stream"}\r
   c.push(`--${b}--`);
   return new B(c, { type: "multipart/form-data; boundary=" + b });
 }
-var t, i, h, r, m, f, e, x, FormData;
+var t, i, h, r, m, f, e, x, FormData2;
 var init_esm_min = __esm({
   "node_modules/formdata-polyfill/esm.min.js"() {
     init_fetch_blob();
@@ -24442,7 +24442,7 @@ var init_esm_min = __esm({
         throw new TypeError(`Failed to execute '${n}' on 'FormData': ${e2} arguments required, but only ${a.length} present.`);
       }
     };
-    FormData = class FormData2 {
+    FormData2 = class FormData3 {
       #d = [];
       constructor(...a) {
         if (a.length) throw new TypeError(`Failed to construct 'FormData': parameter 1 is not of type 'HTMLFormElement'.`);
@@ -24692,7 +24692,7 @@ async function toFormData(Body2, ct) {
   let contentType;
   let filename;
   const entryChunks = [];
-  const formData = new FormData();
+  const formData = new FormData2();
   const onPartData = (ui8a) => {
     entryValue += decoder.decode(ui8a, { stream: true });
   };
@@ -25091,7 +25091,7 @@ var init_body = __esm({
         } else if (ArrayBuffer.isView(body)) {
           body = import_node_buffer.Buffer.from(body.buffer, body.byteOffset, body.byteLength);
         } else if (body instanceof import_node_stream.default) {
-        } else if (body instanceof FormData) {
+        } else if (body instanceof FormData2) {
           body = formDataToBlob(body);
           boundary = body.type.split("=")[1];
         } else {
@@ -25136,7 +25136,7 @@ var init_body = __esm({
       async formData() {
         const ct = this.headers.get("content-type");
         if (ct.startsWith("application/x-www-form-urlencoded")) {
-          const formData = new FormData();
+          const formData = new FormData2();
           const parameters = new URLSearchParams(await this.text());
           for (const [name, value] of parameters) {
             formData.append(name, value);
@@ -25238,7 +25238,7 @@ var init_body = __esm({
       if (import_node_buffer.Buffer.isBuffer(body) || import_node_util.types.isAnyArrayBuffer(body) || ArrayBuffer.isView(body)) {
         return null;
       }
-      if (body instanceof FormData) {
+      if (body instanceof FormData2) {
         return `multipart/form-data; boundary=${request[INTERNALS].boundary}`;
       }
       if (body && typeof body.getBoundary === "function") {
@@ -25988,7 +25988,7 @@ __export(src_exports, {
   Blob: () => fetch_blob_default,
   FetchError: () => FetchError,
   File: () => file_default,
-  FormData: () => FormData,
+  FormData: () => FormData2,
   Headers: () => Headers,
   Request: () => Request,
   Response: () => Response,
@@ -26317,18 +26317,23 @@ var core = require_core();
 var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
 (() => __awaiter(void 0, void 0, void 0, function* () {
   core.startGroup("authenticate-cicd-serviceprincipal:");
-  const cred = {
-    client_id: core.getInput("client_id"),
-    client_secret: core.getInput("client_secret"),
-    grant_type: "client_credentials",
-    scope: core.getInput("scope")
-  };
+  const cred = `{
+        client_id: core.getInput('client_id'),
+        client_secret: core.getInput('client_secret'),
+        grant_type: 'client_credentials',
+        scope: core.getInput('scope')
+    }`;
+  const formData = new FormData();
+  formData.append("client_id", core.getInput("client_id"));
+  formData.append("client_secret", core.getInput("client_secret"));
+  formData.append("scope", core.getInput("scope"));
+  formData.append("grant_type", "client_credentials");
   core.setCommandEcho(true);
   const tenant_id = core.getInput("tenant_id");
   const fetchUrl = `https://login.microsoftonline.com/${tenant_id}/oauth2/v2.0/token`;
   const response = yield (0, node_fetch_1.default)(fetchUrl, {
     method: "POST",
-    body: JSON.stringify(cred),
+    body: formData,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
