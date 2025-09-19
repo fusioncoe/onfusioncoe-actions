@@ -9,10 +9,6 @@ on:
         description: 'The application id to authenticate with.'
         required: false
 
-      cicd_sp_client_secret:
-        description: 'The client secret to authenticate with. Required if authenticating with app-id.'
-        required: false
-
       cicd_tenant_id:
         description: 'Tenant id if using app-id & client secret to authenticate.'
         required: false
@@ -21,18 +17,15 @@ on:
         description: 'Cloud instance to authenticate with. Default: Public. See "pac auth create help" for valid cloud instance names'
         required: false
 
+    # secrets:
+
+      cicd_sp_client_secret:
+        description: 'The client secret to authenticate with. Required if authenticating with app-id.'
+        required: false
+
 runs:
   using: "composite"
   steps:
-    - name: authenticate cicd service principal
-      uses: fusioncoe/onfusioncoe-actions/authenticate-cicd-serviceprincipal@v0
-      with:
-        client_id: ${{ inputs.cicd_app_id }}
-        client_secret: ${{ inputs.cicd_sp_client_secret }}
-        tenant_id: ${{ inputs.cicd_tenant_id }}
-        scope: 'https://graph.microsoft.com/.default'
-
-
 
     - name: authentication
       shell: pwsh    
