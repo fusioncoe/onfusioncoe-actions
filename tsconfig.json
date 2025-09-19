@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node20",
+   
     "sourceMap": true,
     "outDir": "./out",
+    "esModuleInterop": true,    
+     
 
     "strict": true,
     "strictPropertyInitialization": true,
     "noImplicitAny": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "removeComments": false
+
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

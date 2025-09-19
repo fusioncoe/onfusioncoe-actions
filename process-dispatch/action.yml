@@ -1,12 +1,11 @@
-name: 'process-dispatch'
-description: 'Process OnFusionCoe dispatch operation'
+name: "process-dispatch"
+description: "Process OnFusionCoe dispatch operation"
 
 on:
   workflow_call:
     inputs:
-
       dispatch_action:
-        description: 'The action to be taken during the dispatch operation workflow'
+        description: "The action to be taken during the dispatch operation workflow"
         required: true
         type: string
 
@@ -19,44 +18,40 @@ on:
         required: false
 
       client_secret:
-        description: 'The client secret to authenticate with. Required if authenticating with app-id.'
+        description: "The client secret to authenticate with. Required if authenticating with app-id."
         required: false
 
       tenant_id:
-        description: 'Tenant id if using app-id & client secret to authenticate.'
+        description: "Tenant id if using app-id & client secret to authenticate."
         required: false
 
       solution_name:
-        description: 'Name of solution to export'
-        required: false    
+        description: "Name of solution to export"
+        required: false
 
       cloud:
         description: 'Cloud instance to authenticate with. Default: Public. See "pac auth create help" for valid cloud instance names'
         required: false
-        default: 'Public'
-             
+        default: "Public"
 
 runs:
   using: "composite"
   steps:
-    
     - name: Run Env
-      shell: pwsh    
+      shell: pwsh
       run: |
         echo "running action ${{inputs.dispatch_action}}"
 
     - name: Ensure Power Platform
       uses: fusioncoe/onfusioncoe-actions/ensure-powerplatform-install@v0
-      
-
 #jobs:
 #  process-dispatch-action:
 #    runs-on: windows-latest
 
- #   steps:
- #   - name: Run Env
- #     run: env
-    
-    #- name: confirm running
-    #  run: |
-    #    echo "repository variable : ${{inputs.dispatch_action}}"
+#   steps:
+#   - name: Run Env
+#     run: env
+
+#- name: confirm running
+#  run: |
+#    echo "repository variable : ${{inputs.dispatch_action}}"

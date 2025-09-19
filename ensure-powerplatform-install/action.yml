@@ -1,13 +1,13 @@
-name: 'ensure-powerplatform-install'
-description: 'ensure-powerplatform-install'
+name: "ensure-powerplatform-install"
+description: "ensure-powerplatform-install"
 
 on:
   workflow_call:
- 
+
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: running workflow ensure-powerplatform-install. 
-      shell: pwsh  
+    - name: running workflow ensure-powerplatform-install.
+      shell: pwsh
       run: |
-        echo "ensure-powerplatform-install"  
+        echo "ensure-powerplatform-install"

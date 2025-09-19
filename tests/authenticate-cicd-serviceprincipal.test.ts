@@ -1,6 +1,17 @@
 import { jest } from '@jest/globals'
 import * as core from './core'
-//import * as TestRun from '../src/actions/authenticate-cicd-serviceprincipal/index'
+//import {run} from '../src/actions/authenticate-cicd-serviceprincipal/index'
+
+
+const inputs = require('../.testInput/authenticate-cicd-serviceprincipal.json');
+
+const testRun = require('../src/actions/authenticate-cicd-serviceprincipal/index').run;
+
+testRun(inputs);
+
+
+
+
 
 const run = jest.fn()
 
@@ -8,16 +19,18 @@ const run = jest.fn()
 jest.unstable_mockModule('@actions/core', () => core)
 jest.unstable_mockModule('../src/actions/authenticate-cicd-serviceprincipal/index', () => ({ run }))
 
-const inputs = require('../.testInput/authenticate-cicd-serviceprincipal.json');
+
+
+//const testRun = require('../src/actions/authenticate-cicd-serviceprincipal/index').run;
 
 describe('authenticate-cicd-serviceprincipal test', () => {
 
     beforeEach(() =>
         {
-            core.getInput.mockImplementation(() => inputs)
+          //  core.getInput.mockImplementation(() => inputs)
 
             // Mock the wait function so that it does not actually wait.
-            run.mockImplementation(() => Promise.resolve('done!'))
+           // run.mockImplementation(() => Promise.resolve('done!'))
 
         })
 
@@ -26,11 +39,14 @@ describe('authenticate-cicd-serviceprincipal test', () => {
             jest.resetAllMocks()
         })
  
+    
+
     it('Test 1', async () => 
         {
 
-            (await import('../src/actions/authenticate-cicd-serviceprincipal/index')).run(inputs);
+            //await (await import('../src/actions/authenticate-cicd-serviceprincipal/index')).run(inputs);
 
+            await testRun(inputs);
 
             // Verify the time output was set.
             //expect(core.setOutput).toHaveBeenNthCalledWith(

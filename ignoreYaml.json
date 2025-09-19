@@ -1,5 +1,5 @@
 [
-    "ensure-powerplatform-install",
-    "process-service-repo-dispatch",
-    "process-dispatch"
+  "ensure-powerplatform-install",
+  "process-service-repo-dispatch",
+  "process-dispatch"
 ]
