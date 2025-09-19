@@ -175,7 +175,7 @@ async function dist() {
         })
     // ignore the toplevel action.yml that is needed for GH Marketplace
     .filter(actionYaml => path.dirname(actionYaml) !== '.')
-    .filter(actionName => !ignoreYaml.includes(actionName))
+    .filter(actionYaml => !ignoreYaml.includes(path.dirname(actionYaml)))
     .map(actionYaml => path.basename(path.dirname(actionYaml)))
     .filter(actionName => !skippedActionYamls.includes(actionName))
     .map((actionName, idx) => {

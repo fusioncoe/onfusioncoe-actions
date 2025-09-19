@@ -24,6 +24,16 @@ on:
 runs:
   using: "composite"
   steps:
+    - name: authenticate cicd service principal
+      uses: fusioncoe/onfusioncoe-actions/authenticate-cicd-serviceprincipal@v0
+      with:
+        client_id: ${{ inputs.cicd_app_id }}
+        client_secret: ${{ inputs.cicd_sp_client_secret }}
+        tenant_id: ${{ inputs.cicd_tenant_id }}
+        scope: 'https://graph.microsoft.com/.default'
+
+
+
     - name: authentication
       shell: pwsh    
       run: |

@@ -20,6 +20,7 @@ on:
       scope:
         description: 'scope'
         required: false
+        default: 'https://graph.microsoft.com/.default'
 
 runs:
   using: 'node20'
