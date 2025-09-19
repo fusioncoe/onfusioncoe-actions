@@ -26335,7 +26335,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
     method: "POST",
     body: formData,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
       Accept: "application/json"
     }
   });
