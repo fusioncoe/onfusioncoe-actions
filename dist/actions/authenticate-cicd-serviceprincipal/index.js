@@ -26335,7 +26335,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
     }
   });
   if (!response.ok) {
-    throw new Error(`Error! status: ${response.status}`);
+    throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
   }
   var authResponse = yield response.json();
   console.warn(response);
@@ -26350,7 +26350,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
     }
   });
   if (!appResponse.ok) {
-    throw new Error(`Error! status: ${appResponse.status}`);
+    throw new Error(`Error Getting App Info! status: ${appResponse.status} : ${appResponse.statusText}`);
   }
   var appReg = yield response.json();
   core.exportVariable("SPN_BEARER", appReg.displayName);
