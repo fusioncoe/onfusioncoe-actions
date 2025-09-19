@@ -26340,7 +26340,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
     }
   });
   if (!response.ok) {
-    throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
+    throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText} : ${fetchUrl} : ${formData}`);
   }
   var authResponse = yield response.json();
   console.warn(response);
