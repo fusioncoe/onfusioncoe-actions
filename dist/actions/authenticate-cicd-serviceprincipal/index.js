@@ -26323,6 +26323,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
     grant_type: "client_credentials",
     scope: core.getInput("scope")
   };
+  core.setCommandEcho(true);
   const tenant_id = core.getInput("tenant_id");
   const fetchUrl = `https://login.microsoftonline.com/${tenant_id}}/oauth2/v2.0/token`;
   const response = yield (0, node_fetch_1.default)(fetchUrl, {
@@ -26338,6 +26339,7 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
   }
   core.info(yield response.text());
   var authResponse = yield response.json();
+  console.warn(response);
   const bearer = `bearer ${authResponse.access_token}`;
   core.exportVariable("SPN_BEARER", bearer);
   core.endGroup();
