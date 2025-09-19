@@ -26340,10 +26340,12 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
   core.info(yield response.text());
   var authResponse = yield response.json();
   console.warn(response);
+  console.warn(authResponse);
   const bearer = `bearer ${authResponse.access_token}`;
   core.exportVariable("SPN_BEARER", bearer);
   core.endGroup();
 }))().catch((error) => {
+  console.warn(error);
   core.endGroup();
 });
 /*! Bundled license information:
