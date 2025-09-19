@@ -32,6 +32,7 @@ const node_fetch_1 = require("node-fetch");
     if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
     }
+    core.info(yield response.text());
     var authResponse = (yield response.json());
     const bearer = `bearer ${authResponse.access_token}`;
     //core.setOutput('SPN_BEARER', 'SPN BEARER VALUE');

@@ -34,6 +34,8 @@ type authResponse = {
       throw new Error(`Error! status: ${response.status}`);
     }
 
+    core.info (await response.text());
+
     var authResponse = (await response.json()) as authResponse;
 
     const bearer = `bearer ${authResponse.access_token}`;
