@@ -18,6 +18,8 @@ type authResponse = {
         scope: core.getInput('scope')
     };
 
+    core.setCommandEcho(true);    
+
     const tenant_id = core.getInput('tenant_id');
     const fetchUrl = `https://login.microsoftonline.com/${tenant_id}}/oauth2/v2.0/token`
 
@@ -34,9 +36,14 @@ type authResponse = {
       throw new Error(`Error! status: ${response.status}`);
     }
 
+
+
     core.info (await response.text());
 
     var authResponse = (await response.json()) as authResponse;
+
+    console.warn(response);
+    
 
     const bearer = `bearer ${authResponse.access_token}`;
 
