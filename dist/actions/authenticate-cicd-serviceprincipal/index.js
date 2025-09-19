@@ -26337,12 +26337,23 @@ var node_fetch_1 = (init_src(), __toCommonJS(src_exports));
   if (!response.ok) {
     throw new Error(`Error! status: ${response.status}`);
   }
-  core.info(yield response.text());
   var authResponse = yield response.json();
   console.warn(response);
   console.warn(authResponse);
   const bearer = `bearer ${authResponse.access_token}`;
-  core.exportVariable("SPN_BEARER", bearer);
+  const appResponse = yield (0, node_fetch_1.default)("https://graph.microsoft.com/v1.0/applications/44dc6d96-28ad-4a74-8f67-4397c2652eab", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "Authorization": bearer
+    }
+  });
+  if (!appResponse.ok) {
+    throw new Error(`Error! status: ${appResponse.status}`);
+  }
+  var appReg = yield response.json();
+  core.exportVariable("SPN_BEARER", appReg.displayName);
   core.endGroup();
 }))().catch((error) => {
   console.warn(error);
