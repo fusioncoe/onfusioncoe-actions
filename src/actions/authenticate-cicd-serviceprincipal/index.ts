@@ -26,7 +26,7 @@ export interface AuthResponse {
     core.setCommandEcho(true);    
 
     const tenant_id = core.getInput('tenant_id');
-    const fetchUrl = `https://login.microsoftonline.com/${tenant_id}}/oauth2/v2.0/token`
+    const fetchUrl = `https://login.microsoftonline.com/${tenant_id}/oauth2/v2.0/token`
 
     const response = await fetch(fetchUrl, {
       method: 'POST',
@@ -71,7 +71,7 @@ export interface AuthResponse {
 
 
     //core.setOutput('SPN_BEARER', 'SPN BEARER VALUE');
-    core.exportVariable('SPN_BEARER', appReg.displayName);
+    core.exportVariable('SPN_BEARER', appReg.displayName);   
     core.endGroup();
 })().catch(error => {
     console.warn(error);
