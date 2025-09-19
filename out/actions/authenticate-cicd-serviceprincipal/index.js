@@ -32,7 +32,7 @@ const node_fetch_1 = require("node-fetch");
         method: 'POST',
         body: formData,
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             Accept: 'application/json',
         },
     });
