@@ -13,18 +13,24 @@ const core = require("@actions/core");
 const node_fetch_1 = require("node-fetch");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     core.startGroup('authenticate-cicd-serviceprincipal:');
-    const cred = {
+    const cred = `{
         client_id: core.getInput('client_id'),
         client_secret: core.getInput('client_secret'),
         grant_type: 'client_credentials',
         scope: core.getInput('scope')
-    };
+    }`;
+    const formData = new FormData();
+    formData.append("client_id", core.getInput('client_id'));
+    formData.append("client_secret", core.getInput('client_secret'));
+    formData.append("scope", core.getInput('scope'));
+    formData.append("grant_type", "client_credentials");
+    //const credstring = `client_id=${core.getInput('client_id')}&client_secret=${core.getInput('client_secret')}&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&grant_type=client_credentials`
     core.setCommandEcho(true);
     const tenant_id = core.getInput('tenant_id');
     const fetchUrl = `https://login.microsoftonline.com/${tenant_id}/oauth2/v2.0/token`;
     const response = yield (0, node_fetch_1.default)(fetchUrl, {
         method: 'POST',
-        body: JSON.stringify(cred),
+        body: formData,
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
