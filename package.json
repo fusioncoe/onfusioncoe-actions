@@ -16,7 +16,6 @@
     "actions"
   ],
   "scripts": {
-    "clean": "scorch",
     "build": "node node_modules/gulp/bin/gulp.js",
     "bundle": "npm run format:write && npm run package",
     "ci-test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 npx jest",
@@ -61,7 +60,6 @@
     "gulp-mocha": "^8.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "make-help": "^1.0.2",
     "mocha": "^10.4.0",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.38",
@@ -85,6 +83,7 @@
     "date-fns": "^3.6.0",
     "fs-extra": "^11.2.0",
     "js-yaml": "^4.1",
+    "make-help": "^1.0.2",
     "uuid": "^9.0.1"
   },
   "overrides": {
