@@ -49,7 +49,7 @@ export interface AuthResponse {
     });
 
     if (!response.ok) {
-      throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
+      throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText} : ${fetchUrl} : ${formData}`);
     }
 
     var authResponse = (await response.json()) as AuthResponse;

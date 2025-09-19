@@ -37,7 +37,7 @@ const node_fetch_1 = require("node-fetch");
         },
     });
     if (!response.ok) {
-        throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText}`);
+        throw new Error(`Error Authenticating! status: ${response.status} : ${response.statusText} : ${fetchUrl} : ${formData}`);
     }
     var authResponse = (yield response.json());
     console.warn(response);
